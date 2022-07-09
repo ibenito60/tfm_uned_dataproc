@@ -1,8 +1,5 @@
-from calendar import c
-from typing_extensions import Self
 from pyspark.sql import SparkSession, DataFrame
 import pyspark.sql.functions as fn
-from soupsieve import select
 from pyspark.sql.types import DateType
 from datetime import datetime, timedelta
 import getpass
@@ -88,7 +85,7 @@ class clase_func_comunes:
 class ingesta_datos():
 
     def __init__(self, spark: SparkSession) -> None:
-        self.fc = fc.clase_func_comunes()
+        self.fc = clase_func_comunes()
         self.spark = spark
         self.polizas = self.spark.read.csv("gs://uned_master_bucket_spark_nbu/csv_tfm/polizas.txt",inferSchema=True, sep=',', header=True)
         self.siniestros = self.spark.read.csv("gs://uned_master_bucket_spark_nbu/csv_tfm/siniestros.txt",inferSchema=True, sep=',', header=True)
